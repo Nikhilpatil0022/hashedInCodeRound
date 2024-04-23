@@ -1,0 +1,46 @@
+import "./styles.css";
+import React, { useState, useEffect } from "react";
+
+// id, name age
+// search
+// sort
+
+const SampleData = [
+  { id: 1, name: "nikhil", age: 23 },
+  { id: 2, name: "John", age: 34 },
+  { id: 3, name: "Rahul", age: 44 },
+  { id: 4, name: "Aman", age: 88 },
+  { id: 5, name: "Ajay", age: 23 },
+];
+
+export default function App() {
+  const [str, setStr] = useState("");
+
+  const handleChange = (e) => {
+    const text = e.target.value;
+    setStr(text);
+  };
+
+  const checkPalindrome = (value) => {
+    let i = 0;
+    let j = value.length - 1;
+
+    while (i < j) {
+      if (value[i] !== value[j]) {
+        return "false";
+      }
+      return "true";
+    }
+  };
+
+  return (
+    <div className="App">
+      <input type="text" onChange={handleChange} />
+      {str && (
+        <span>
+          {str}: {checkPalindrome(str)}
+        </span>
+      )}
+    </div>
+  );
+}
